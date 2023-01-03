@@ -10,6 +10,10 @@
     --third-color: #532E1C;
     --fifth-color: #0F0F0F;
     --nav-text-color: ##1A120B;
+    --header-margin: 0.5rem;
+    --border-size: 3px;
+    --border-style: var(--border-size) solid var(--third-color);
+    --border-style-main: 1px solid var(--fifth-color);
 }
 
 body {
@@ -34,7 +38,8 @@ body {
 }
 
 .container > * {
-    outline: 1px solid black;
+    /*outline: 1px solid black;
+    */
 }
 
 .grid {
@@ -49,6 +54,11 @@ header {
     top: 0;
     width: 100dvw;
     background-color: var(--second-color);
+    border-bottom: var(--border-style);
+}
+
+header > .main-container > .logo-container > a > img {
+    margin: var(--header-margin);
 }
 
 header > .main-container > p {
@@ -66,6 +76,10 @@ header > .main-container > nav > ul li {
     list-style: none;
 }
 
+header > .main-container > nav > ul li:last-child {
+    margin-right: 0;
+}
+
 header > .main-container > nav > ul > li a {
     font-weight: bold;
     text-decoration: none;
@@ -77,6 +91,10 @@ header > .main-container > nav > ul > li a {
 main {
     grid-column: 2 / 3;
     background-color: var(--main-color);
+    margin-top: calc(50px + var(--header-margin) + var(--border-size));
+    border-left: var(--border-style-main);
+    border-right: var(--border-style-main);
+    padding: 1rem;
 }
 
 .main-container {
@@ -89,4 +107,5 @@ main {
 footer {
     grid-column: 1 / 4;
     background: var(--second-color);
+    border-top: var(--border-style);
 }

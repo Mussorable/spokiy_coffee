@@ -161,12 +161,12 @@ footer > .navigation-list > li {
 
 footer > .navigation-list > li > a {
     padding-right: 1rem;
+    display: block;
 }
 
 footer > .navigation-list > li > a:hover {
     background-color: var(--b-color);
     color: var(--w-color);
-    display: block;
 }
 
 footer > address {

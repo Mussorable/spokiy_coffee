@@ -111,7 +111,7 @@ main .grid-low:nth-child(odd) > .content-container > .link-container {
 main .grid-low > .content-container > .link-container > .main-content-links-nav {
     text-decoration: none;
     display: inline-block;
-    padding: 0.7rem;
+    padding: 0.5rem 1rem;
 }
 
 main .grid-low:nth-child(even) > .content-container > .link-container > .main-content-links-nav {
@@ -122,6 +122,14 @@ main .grid-low:nth-child(even) > .content-container > .link-container > .main-co
 main .grid-low:nth-child(odd) > .content-container > .link-container > .main-content-links-nav {
     color: var(--dark-link-color);
     border: 1px solid var(--dark-link-color);
+}
+
+main .grid-low:nth-child(even) > .content-container > .link-container > .main-content-links-nav:hover {
+    background-color: var(--dark-link-color);
+}
+
+main .grid-low:nth-child(odd) > .content-container > .link-container > .main-content-links-nav:hover {
+    background-color: #4d1c39;
 }
 
 /* -- MAIN-END -- */

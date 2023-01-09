@@ -3,14 +3,13 @@
 }
 
 :root {
-    --w-color: #F0EDEE;
+    --light-main-color: #F4F3F3;
+    --light-second-color: #DFDFDF;
     --b-color: #0F1020;
 
-    --rv-color: #140731;
     --dark-link-color: #e89fca;
     --light-link-color: #CB1C8D;
 
-    --border-style: 1px solid var(--b-color);
     --border-style-hf:2px solid var(--b-color);
 }
 
@@ -44,7 +43,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--w-color);
+    background-color: var(--light-main-color);
     border-bottom: var(--border-style-hf);
 }
 
@@ -73,7 +72,6 @@ main {
 main .grid-low {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    border-bottom: var(--border-style);
 }
 
 main .grid-low > .content-container {
@@ -81,26 +79,20 @@ main .grid-low > .content-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, 1fr);
     grid-auto-rows: 0.1fr;
-    align-content: center;
+    align-content: start;
 }
 
 main .grid-low:nth-child(odd) > .content-container {
     grid-column: 2 / 4;
-    color: var(--w-color);
-    background-color: var(--rv-color);
+    background-color: var(--light-second-color);
 }
 
 main .grid-low:nth-child(even) > .content-container {
     grid-column: 1 / 3;
-    background-color: var(--w-color);
-}
-
-main .grid-low:nth-child(odd) > .image-container {
-    border-right: var(--border-style);
+    background-color: var(--light-main-color);
 }
 
 main .grid-low:nth-child(even) > .image-container {
-    border-left: var(--border-style);
     order: 1;
 }
 
@@ -112,24 +104,12 @@ main .grid-low > .content-container > .link-container > .main-content-links-nav 
     text-decoration: none;
     display: inline-block;
     padding: 0.5rem 1rem;
+    color: red;
+    border: 1px solid black;
 }
 
-main .grid-low:nth-child(even) > .content-container > .link-container > .main-content-links-nav {
-    color: var(--light-link-color);
-    border: 1px solid var(--light-link-color);
-}
-
-main .grid-low:nth-child(odd) > .content-container > .link-container > .main-content-links-nav {
-    color: var(--dark-link-color);
-    border: 1px solid var(--dark-link-color);
-}
-
-main .grid-low:nth-child(even) > .content-container > .link-container > .main-content-links-nav:hover {
-    background-color: var(--dark-link-color);
-}
-
-main .grid-low:nth-child(odd) > .content-container > .link-container > .main-content-links-nav:hover {
-    background-color: #4d1c39;
+main .grid-low > .content-container > .link-container > .main-content-links-nav:hover {
+    background-color: darkgray;
 }
 
 /* -- MAIN-END -- */
@@ -139,7 +119,7 @@ main .grid-low:nth-child(odd) > .content-container > .link-container > .main-con
 footer {
     display: flex;
     justify-content: space-around;
-    background-color: var(--w-color);
+    background-color: var(--light-main-color);
     padding-block   : 1rem;
     align-items: center;
 }
@@ -166,7 +146,7 @@ footer > .navigation-list > li > a {
 
 footer > .navigation-list > li > a:hover {
     background-color: var(--b-color);
-    color: var(--w-color);
+    color: var(--light-main-color);
 }
 
 footer > address {
@@ -190,5 +170,3 @@ footer > address {
         order: 0;
     }
 }
-
-test

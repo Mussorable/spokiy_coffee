@@ -3,10 +3,12 @@
 }
 
 :root {
-    --light-main-color: #F4F3F3;
+    --light-main-color: #FFFAFA;
     --light-second-color: #dbdbdb;
     --b-color: #0F1020;
     --button-bg-color: #A27B5C;
+
+    --dark-main-color:#252525;
 
     --dark-link-color: #e89fca;
     --light-link-color: #CB1C8D;
@@ -195,6 +197,22 @@ footer > address:hover {
 /* -- FOOTER-END -- */
 
 /* -- MEDIA -- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --light-main-color: #252525;
+        --light-second-color: #252525;
+        --b-color: #FFFAFA;
+    }
+
+    header {
+        background-color: var(--b-color);
+    }
+
+    footer {
+        border-top: 1px solid var(--b-color);
+    }
+}
 
 @media (max-width: 700px) {
     main .flex-lg {

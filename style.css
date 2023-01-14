@@ -59,10 +59,41 @@ header > nav > ul > li {
     margin-right: 1rem;
 }
 
-header > nav > ul > li:hover {
+header > nav > ul > li img.nav-icons:hover {
     filter: invert(73%) sepia(61%) saturate(2362%) hue-rotate(287deg) brightness(92%) contrast(97%);
 }
 
+header > nav > ul > #change-lang {
+    position: relative;
+}
+
+header > nav > ul > li > .lang-container {
+    display: flex;
+    flex-direction: column;
+    border: var(--border-style-hf);
+    position: fixed;
+    top: 9%;
+    right: 2%;
+    background-color: var(--light-main-color);
+}
+
+header > nav > ul > li > .lang-container > .lang-flag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-inline: 1rem;
+    border-bottom: 1px solid var(--b-color);
+    transition: background-color .2s;
+}
+
+header > nav > ul > li > .lang-container > .lang-flag:last-child {
+    border-bottom: none;
+}
+
+header > nav > ul > li > .lang-container > .lang-flag:hover {
+    background-color: lightgrey;
+}
 /* -- HEADER-END -- */
 
 /* -- MAIN-START -- */
@@ -198,7 +229,7 @@ footer > address:hover {
 
 /* -- MEDIA -- */
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
     :root {
         --light-main-color: #252525;
         --light-second-color: #252525;
@@ -212,7 +243,7 @@ footer > address:hover {
     footer {
         border-top: 1px solid var(--b-color);
     }
-}
+}*/
 
 @media (max-width: 700px) {
     main .flex-lg {

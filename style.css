@@ -35,6 +35,16 @@ body {
     border-width: 0;
 }
 
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
 /* -- GLOBAL-END -- */
 
 /* -- HEADER-START -- */
@@ -72,9 +82,10 @@ header > nav > ul > li > .lang-container {
     flex-direction: column;
     border: var(--border-style-hf);
     position: fixed;
-    top: 9%;
+    top: 7%;
     right: 2%;
     background-color: var(--light-main-color);
+    visibility: hidden;
 }
 
 header > nav > ul > li > .lang-container > .lang-flag {
@@ -202,14 +213,16 @@ footer > .navigation-list > li {
     padding-block: 0.1rem;
 }
 
-footer > .navigation-list > li > a {
+footer > .navigation-list > li > a,
+footer > .navigation-list > li > button {
     padding-right: 1rem;
     display: block;
     text-decoration: underline;
     font-weight: 200;
 }
 
-footer > .navigation-list > li > a:hover {
+footer > .navigation-list > li > a:hover,
+footer > .navigation-list > li > button:hover {
     background-color: var(--b-color);
     color: var(--light-main-color);
 }
@@ -244,6 +257,12 @@ footer > address:hover {
         border-top: 1px solid var(--b-color);
     }
 }*/
+
+    /* -- JS CLASSES -- */
+
+    .visible {
+        visibility: visible !important;
+    }
 
 @media (max-width: 700px) {
     main .flex-lg {

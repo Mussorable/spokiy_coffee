@@ -9,6 +9,6 @@ const buttonReviews = document.querySelector("#reviews-button");
 
 buttonReviews.addEventListener("click", () => {
     console.log("Clicked");
-    const API = new FetchWrapper("https://effervescent-kheer-95417a.netlify.app/");
+    const API = new FetchWrapper("/");
     API.post(`reviews.json`, newObj).then(response => console.log(response));
 });

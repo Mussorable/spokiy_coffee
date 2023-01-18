@@ -128,8 +128,6 @@ main > .main-commercial > .flex-lg > .content-container > p {
 
 main > .main-commercial > .flex-lg > .image-container {
     padding: 1rem;
-    border: 2px solid var(--b-color);
-    border-top: none;
 }
 
 main > section > .flex-lg:not(:first-child) {
@@ -158,13 +156,7 @@ main > section > .flex-lg > .content-container > h2 {
 }
 
 main > section > .flex-lg > .image-container > img {
-    border-radius: 10%;
-    border: 3px solid var(--b-color);
-    box-shadow: 11px 9px 24px -3px rgba(66, 68, 90, 1);
-}
-
-main > section > .flex-lg:nth-child(even) > .image-container > img {
-    box-shadow: -11px 9px 24px -3px rgba(66, 68, 90, 1);
+    border: 1px solid var(--b-color);
 }
 
 main .flex-lg:nth-child(odd) > .content-container > .link-container {
@@ -236,6 +228,35 @@ footer > address {
 
 footer > address:hover {
     border-bottom: 2px solid var(--b-color);
+}
+
+/* -- REVIEWS-PAGE */
+
+#reviews-page .comment-container {
+    outline: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.3rem;
+    padding-inline: 1rem;
+    gap: 0.6rem;
+    margin-inline: 2rem;
+}
+
+#reviews-page .comment-container:last-child {
+    margin-bottom: 0;
+}
+
+#reviews-page .comment-container > h3,
+#reviews-page .comment-container > p {
+    margin: 0;
+}
+
+#reviews-page .comment-container > h3 {
+    font-size: 1rem;
+}
+
+#reviews-page .comment-container > p {
+    margin-left: 1.5rem;
 }
 
 /* -- FOOTER-END -- */

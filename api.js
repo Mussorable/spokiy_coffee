@@ -3,15 +3,15 @@ import FetchWrapper from "./fetch_wrapper.js";
 const BaseURL = `https://spokiy-cofee-ua-default-rtdb.europe-west1.firebasedatabase.app/`;
 const ReviewEndpoint = `reviews.json`;
 
-const newObj = {
-    review: "Pretty",
-    client_id: `0x134`
-};
+const submitButton = document.querySelector("#send-button");
+const reviewField = document.querySelector("#review-field");
+const userName = document.querySelector("#user-name");
 
-const buttonReviews = document.querySelector("#reviews-button");
-
-buttonReviews.addEventListener("click", () => {
-    console.log("Clicked");
+submitButton.addEventListener("submit", event => {
+    event.preventDefault();
     const API = new FetchWrapper(BaseURL);
-    API.get(ReviewEndpoint).then(response => console.log(response));
+    API.post(ReviewEndpoint, {fields: {
+        name: userName,
+        review: reviewField
+    }}).then(response => console.log(response));
 });

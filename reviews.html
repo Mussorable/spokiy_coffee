@@ -21,7 +21,14 @@
     <main>
         <div id="leave-comment-container" class="global-container">
             <div class="heading-container">
-                <h2>Залиш свою думку</h2>
+                <form aria-labelledby="leave-comment-heading">
+                    <h2 id="leave-comment-heading">Залиш свою думку</h2>
+                    <label for="user-name">Твоє ім'я</label>
+                    <input id="user-name" placeholder="" type="text">
+                    <label for="review-field">Тут напиши свій коментар</label>
+                    <textarea id="review-field" cols="30" rows="10" placeholder="Твій коментар"></textarea>
+                    <button id="send-button" type="submit">Відправити</button>
+                </form>
             </div>
         </div>
         <section id="reviews-page" class="global-container">
@@ -39,5 +46,7 @@
         </section>
     </main>
     <script type="module" src="render.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="api.js"></script>
 </body>
 </html>

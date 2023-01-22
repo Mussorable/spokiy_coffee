@@ -9,7 +9,7 @@ const headerHtml =
                     <div id="lang-container" class="lang-container">
                         <div class="lang-flag"><p>English</p><img class="lang-icon" src="/svg/usa.svg" width="auto" height="40" alt=""></div>
                         <div class="lang-flag"><p>Українська</p><img class="lang-icon" src="/svg/ua.svg" width="auto" height="40" alt=""></div>
-                        <div class="lang-flag"><p>Polska</p><img class="lang-icon" src="/svg/pl.svg" width="auto" height="40" alt=""></div>
+                        <div class="lang-flag"><p>Polski</p><img class="lang-icon" src="/svg/pl.svg" width="auto" height="40" alt=""></div>
                     </div>
                 </li>
             </ul>

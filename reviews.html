@@ -21,12 +21,12 @@
     <main>
         <div id="leave-comment-container" class="global-container">
             <div class="heading-container">
-                <form aria-labelledby="leave-comment-heading">
+                <form id="review-form">
                     <h2 id="leave-comment-heading">Залиш свою думку</h2>
                     <label for="user-name">Твоє ім'я</label>
-                    <input id="user-name" placeholder="" type="text">
+                    <input pattern="^[a-zA-Z0-9]+" id="user-name" placeholder="" type="text" maxlength="30" required>
                     <label for="review-field">Тут напиши свій коментар</label>
-                    <textarea id="review-field" cols="30" rows="10" placeholder="Твій коментар"></textarea>
+                    <textarea id="review-field" cols="30" rows="10" placeholder="Твій коментар" minlength="5" required autocapitalize="off" autocomplete="off"></textarea>
                     <button id="send-button" type="submit">Відправити</button>
                 </form>
             </div>
@@ -35,13 +35,7 @@
             <div class="heading-container">
                 <h1>Відгуки</h1>
             </div>
-            <div class="comment-container">
-                <h3>OLEH DIAKOV</h3>
-                <p class="comment">Perfectly!</p>
-            </div>
-            <div class="comment-container">
-                <h3>OLGA SKIBINSKA</h3>
-                <p class="comment">Very impressive place</p>
+            <div id="reviews-container">
             </div>
         </section>
     </main>

@@ -137,6 +137,7 @@ main > section > .flex-lg:not(:first-child) {
 main .global-container {
     max-width: 1180px;
     margin: auto;
+    padding-inline:0.5rem;
 }
 
 main > section.global-container {
@@ -292,7 +293,12 @@ footer > address:hover {
         visibility: visible !important;
     }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
+    header > a > img,
+    header > nav > ul > li img.nav-icons {
+        height: 10dvw;
+    }
+    
     main .flex-lg {
         flex-direction: column;
         gap: 1rem;
@@ -317,5 +323,9 @@ footer > address:hover {
 
     main .flex-lg > .content-container > .link-container {
         text-align: center !important;
+    }
+
+    footer > address {
+        padding: 0;
     }
 }

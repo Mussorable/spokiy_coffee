@@ -6,10 +6,6 @@ const showLangContainer = () => {
     langContainer.classList.toggle("visible");
 };
 
-changeLang.addEventListener("click", () => {
-    showLangContainer();
-});
-
 footerChangeLang.addEventListener("click", () => {
     showLangContainer();
 });

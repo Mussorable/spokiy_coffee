@@ -59,52 +59,44 @@ header {
     border-bottom: var(--border-style-hf);
 }
 
+header img.logo {
+    margin-left: 1rem;
+    margin-top: 0.5vh;
+}
+
+header > nav {
+    margin-right: 1rem;
+}
+
 header > nav > ul {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
-header > nav > ul > li {
-    display: inline-block;
-    margin-right: 1rem;
+header > nav > ul > li > a {
+    padding: 0.7rem;
+    transition: 0.2s;
+    border-left: 2px solid var(--light-main-color);
+    border-right: 2px solid var(--light-main-color);
+    text-decoration: none;
+    color: var(--b-color);
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -.1rem;
 }
 
-header > nav > ul > li img.nav-icons:hover {
-    filter: invert(73%) sepia(61%) saturate(2362%) hue-rotate(287deg) brightness(92%) contrast(97%);
+header > nav > ul > li > a:hover {
+    border-left: 2px solid var(--b-color);
+    border-right: 2px solid var(--b-color);
+    background-color: var(--light-second-color);
 }
 
-header > nav > ul > #change-lang {
-    position: relative;
-}
-
-header > nav > ul > li > .lang-container {
-    display: flex;
-    flex-direction: column;
-    border: var(--border-style-hf);
-    position: fixed;
-    top: 7%;
-    right: 2%;
-    background-color: var(--light-main-color);
-    visibility: hidden;
-}
-
-header > nav > ul > li > .lang-container > .lang-flag {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding-inline: 1rem;
-    border-bottom: 1px solid var(--b-color);
-    transition: background-color .2s;
-}
-
-header > nav > ul > li > .lang-container > .lang-flag:last-child {
-    border-bottom: none;
-}
-
-header > nav > ul > li > .lang-container > .lang-flag:hover {
-    background-color: lightgrey;
-}
 /* -- HEADER-END -- */
 
 /* -- MAIN-START -- */
@@ -156,10 +148,6 @@ main > section > .flex-lg > .content-container > h2 {
     font-size: 1.5rem;
 }
 
-main > section > .flex-lg > .image-container > img {
-    border: 1px solid var(--b-color);
-}
-
 main .flex-lg:nth-child(odd) > .content-container > .link-container {
     text-align: end;
 }
@@ -168,15 +156,19 @@ main .flex-lg > .content-container > .link-container > .main-content-links-nav {
     text-decoration: none;
     display: inline-block;
     padding: 0.5rem 1rem;
-    color: white;
-    background-color: var(--button-bg-color);
-    border: 1px solid var(--b-color);
-    border-radius: 3px;
+    background-color: var(--light-main-color);
+    color: var(--b-color);
     transition: .3s;
+    border-radius: 6px;
+    border: 1.3px solid var(--b-color);
 }
 
 main .flex-lg > .content-container > .link-container > .main-content-links-nav:hover {
-    background-color: #7c7f85;
+    background-color: var(--b-color);
+    border-color: var(--b-color);
+    color: var(--light-main-color);
+    box-shadow: 0px 10px 31px -10px rgba(94, 17, 72, 1);
+    padding-inline: 1.3rem;
 }
 
 /* -- MAIN-END -- */
@@ -218,6 +210,38 @@ footer > .navigation-list > li > a:hover,
 footer > .navigation-list > li > button:hover {
     background-color: var(--b-color);
     color: var(--light-main-color);
+}
+
+footer > .navigation-list > li#change-lang {
+    position: relative;
+}
+
+footer > .navigation-list > li > .lang-container {
+    display: flex;
+    top: -157px;
+    flex-direction: column;
+    border: var(--border-style-hf);
+    position: absolute;
+    background-color: var(--light-main-color);
+    visibility: hidden;
+}
+
+footer > ul > li > .lang-container > .lang-flag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-inline: 1rem;
+    border-bottom: 1px solid var(--b-color);
+    transition: background-color .2s;
+}
+
+footer > ul > li > .lang-container > .lang-flag:last-child {
+    border-bottom: none;
+}
+
+footer > ul > li > .lang-container > .lang-flag:hover {
+    background-color: lightgrey;
 }
 
 footer > address {

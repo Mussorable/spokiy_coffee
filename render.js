@@ -1,12 +1,8 @@
 const headerHtml = 
     `<header class="flex">
         <div><a href="/"><img class="logo" src="/media/rsz_main_logo.png" height="40" width="auto" alt=""></a></div>
-        <nav>
-            <ul>
-                <li><a href="#">Меню</a></li>
-                <li><a href="/promotions.html">Акції</a></li>
-                <li><a href="/reviews.html">Відгуки</a></li>
-            </ul>
+        <nav id="navigation-list">
+
         </nav>
     </header>`;
 const footerHtml = 
@@ -41,6 +37,63 @@ const langTiles = {
     pl: "Polski"
 }
 
+const mediaNaviButtons = {
+    menu: {
+        span: "Меню",
+        svg: "/svg/coffee.svg",
+        link: "menu",
+        href: "/menu.html"
+    },
+    promotions: {
+        span: "Акції",
+        svg: "/svg/promotions.svg",
+        link: "promotions",
+        href: "/promotions.html"
+    },
+    reviews: {
+        span: "Відгуки",
+        svg: "/svg/reviews.svg",
+        link: "reviews",
+        href: "reviews.html"
+    }
+}
+
+const setNaviLinks = () => {
+    document.querySelector("#navigation-list").appendChild(document.createElement("ul"));
+    Object.values(mediaNaviButtons).forEach(item => {
+        const frag = document.createDocumentFragment();
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        const text = document.createElement("span");
+        li.classList.add("navigation-list");
+        a.classList.add("navigation-link");
+        a.setAttribute("href", item.href);
+        a.setAttribute("navigation", item.link);
+        text.classList.add("navigation-text");
+        const navigationLink = frag
+            .appendChild(li)
+            .appendChild(a)
+            .appendChild(text);
+        navigationLink.textContent = item.span;
+
+        document.querySelector("#navigation-list > ul").appendChild(frag);
+    });
+};
+
+const mediaMaxWidth = (screenWidth) => {
+    if (screenWidth.matches) {
+        document.querySelectorAll(".navigation-link").forEach(item => {
+            item.querySelector("span").classList.add("sr-only");
+            const attr = item.getAttribute("navigation");
+            const svgElement = document.createElement("img");
+            svgElement.setAttribute("src", mediaNaviButtons[attr].svg);
+            svgElement.setAttribute("height", "40");
+            svgElement.setAttribute("width", "auto");
+            item.appendChild(svgElement);
+        });
+    }
+}
+
 const multiLang = () => {
     Object.keys(langTiles).forEach(item => {
         document.querySelector("#lang-container").insertAdjacentHTML("afterbegin", 
@@ -57,9 +110,12 @@ const initialization = () => {
     });
 
     document.body.insertAdjacentHTML("afterbegin", headerHtml);
+    setNaviLinks();
+
     document.body.insertAdjacentHTML("beforeend", footerHtml);
 
     multiLang();
+    mediaMaxWidth(window.matchMedia("(max-width:600px)"));
 }
 
 initialization();

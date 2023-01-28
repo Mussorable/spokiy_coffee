@@ -65,14 +65,14 @@ header img.logo {
 }
 
 header > nav {
-    margin-right: 1rem;
+    margin: 1rem;
 }
 
 header > nav > ul {
     display: flex;
     justify-items: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1.5rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -81,8 +81,6 @@ header > nav > ul {
 header > nav > ul > li > a {
     padding: 0.7rem;
     transition: 0.2s;
-    border-left: 2px solid var(--light-main-color);
-    border-right: 2px solid var(--light-main-color);
     text-decoration: none;
     color: var(--b-color);
     font-size: 1.3rem;
@@ -92,8 +90,6 @@ header > nav > ul > li > a {
 }
 
 header > nav > ul > li > a:hover {
-    border-left: 2px solid var(--b-color);
-    border-right: 2px solid var(--b-color);
     background-color: var(--light-second-color);
 }
 
@@ -318,9 +314,27 @@ footer > address:hover {
     }
 
 @media (max-width: 600px) {
-    header > a > img,
-    header > nav > ul > li img.nav-icons {
+    header > div > a > img.logo {
         height: 10dvw;
+        margin-left: 0;
+        margin-top: 0.2rem;
+    }
+
+    header > #navigation-list {
+        margin: 0;
+    }
+
+    header > #navigation-list > ul {
+        gap: 0;
+    }
+
+    header > #navigation-list > ul > li > a > img {
+        height: 10dvw;
+        padding-block: 0.2rem;
+    }
+
+    header > #navigation-list > ul > li > a:hover {
+        background-color: transparent;
     }
     
     main .flex-lg {

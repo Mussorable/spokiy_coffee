@@ -28,6 +28,7 @@ reviewForm.addEventListener("submit", event => {
                 
         document.querySelector("h3").textContent = userName.value;
         document.querySelector(".comment").textContent = reviewField.value;
+        reviewRender(reviewField.value.length, document.querySelector(".comment-container"));
     });
 });
 
@@ -57,5 +58,9 @@ const reviewRender = (reviewLength, commentBlock) => {
         commentBlock.classList.add("lg-span");
     }
 }
+
+document.querySelector("#user-name").addEventListener("blur", event => {
+    document.querySelector("#user-name").classList.add("clicked");
+});
 
 showReviews();

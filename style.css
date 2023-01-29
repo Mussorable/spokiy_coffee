@@ -3,8 +3,11 @@
 }
 
 :root {
+    /* color-scheme: light dark; */
+
     --light-main-color: #FFFAFA;
     --light-second-color: #dbdbdb;
+    --white: #fff;
     --b-color: #0F1020;
     --button-bg-color: #A27B5C;
 
@@ -14,6 +17,10 @@
     --light-link-color: #CB1C8D;
 
     --border-style-hf:2px solid var(--b-color);
+}
+
+input, textarea, select, button {
+    font: inherit;
 }
 
 body {
@@ -35,7 +42,7 @@ body {
     border-width: 0;
 }
 
-button, input[type="submit"], input[type="reset"] {
+footer > ul > li > button {
 	background: none;
 	color: inherit;
 	border: none;
@@ -43,6 +50,10 @@ button, input[type="submit"], input[type="reset"] {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+textarea {
+    resize: none;
 }
 
 /* -- GLOBAL-END -- */
@@ -195,7 +206,7 @@ footer > .navigation-list > li {
 }
 
 footer > .navigation-list > li > a,
-footer > .navigation-list > li > button {
+footer > .navigation-list > li > button#footer-change-lang {
     padding-right: 1rem;
     display: block;
     text-decoration: underline;
@@ -259,6 +270,64 @@ main .heading-container h1 {
     font-weight: 400;
 }
 
+#leave-comment-container > .heading-container > #review-form > .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-inline: 10dvw;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container label {
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .name-block > #user-name {
+    width: 20dvw;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .review-block > #review-field {
+    width: 100%;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .name-block > #user-name,
+#leave-comment-container > .heading-container > #review-form > .form-container > .review-block > #review-field {
+    border: 1.5px solid var(--b-color);
+    border-radius: 3px;
+    padding: 0.7rem;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .name-block > #user-name:focus,
+#leave-comment-container > .heading-container > #review-form > .form-container > .review-block > #review-field:focus {
+    border: 1.5px solid #0093D9;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .name-block > #user-name.clicked:invalid,
+#leave-comment-container > .heading-container > #review-form > .form-container > .review-block > #review-field.clicked:invalid {
+    border:2px solid #ff3333;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .button-container > #send-button {
+    background-color: var(--light-main-color);
+    border: 1.5px solid var(--b-color);
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    transition: .3s;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .button-container > #send-button:hover {
+    background-color: var(--b-color);
+    color: var(--light-main-color);
+    cursor: pointer;
+    box-shadow: 0px 10px 31px -10px rgba(94, 17, 72, 1);
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .button-container > #send-button:active {
+    background-color: grey;
+}
+
 #reviews-page > #reviews-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -269,11 +338,12 @@ main .heading-container h1 {
 #reviews-page .comment-container {
     display: flex;
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 1.3rem 1rem;
     border-radius: 6px;
     border: 1px solid black;
     justify-content: space-between;
     gap: 1rem;
+    background-color: var(--white);
 }
 
 #reviews-page .comment-container:last-child {
@@ -297,7 +367,7 @@ main .heading-container h1 {
 
 #reviews-page .comment-container > .comment-time {
     font-size: 0.8rem;
-    color: var(--button-bg-color);
+    color: grey;
     text-align: right;
 }
 
@@ -392,5 +462,19 @@ main .heading-container h1 {
 
     #reviews-page > #reviews-container > .comment-container {
         min-height: 0;
+    }
+ 
+    #leave-comment-container > .heading-container > #review-form > .form-container {
+        padding-inline: 0;
+    }
+
+    #leave-comment-container > .heading-container > #review-form > .form-container > .name-block > #user-name {
+        width: 100%;
+    }
+
+    .md-span,
+    .lg-span {
+        grid-column-end: span 1;
+        grid-row-end: span 1;
     }
 }

@@ -116,6 +116,10 @@ const initialization = () => {
 
     multiLang();
     mediaMaxWidth(window.matchMedia("(max-width:600px)"));
+
+    document.querySelector("#footer-change-lang").addEventListener("click", () => {
+        document.querySelector("#lang-container").classList.toggle("visible");
+    });
 }
 
 initialization();

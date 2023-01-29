@@ -79,7 +79,7 @@ header > nav > ul {
 }
 
 header > nav > ul > li > a {
-    padding: 0.7rem;
+    padding: 1rem 0.5rem;
     transition: 0.2s;
     text-decoration: none;
     color: var(--b-color);
@@ -253,15 +253,27 @@ footer > address:hover {
 
 /* -- REVIEWS-PAGE */
 
+main .heading-container h2,
+main .heading-container h1 {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+#reviews-page > #reviews-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    grid-auto-flow: row dense;
+}
+
 #reviews-page .comment-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.3rem;
-    padding-inline: 1rem;
-    gap: 0.6rem;
-    margin-inline: 2rem;
-    border-bottom: 1px solid var(--b-color);
-    padding-bottom: 1dvh;
+    padding: 2rem 1rem;
+    border-radius: 6px;
+    border: 1px solid black;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 #reviews-page .comment-container:last-child {
@@ -275,6 +287,8 @@ footer > address:hover {
 
 #reviews-page .comment-container > h3 {
     font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 #reviews-page .comment-container > .comment {
@@ -311,6 +325,15 @@ footer > address:hover {
 
     .visible {
         visibility: visible !important;
+    }
+
+    .md-span {
+        grid-row-end: span 2;
+    }
+
+    .lg-span {
+        grid-row-end: span 2;
+        grid-column-end: span 2;
     }
 
 @media (max-width: 600px) {
@@ -365,5 +388,9 @@ footer > address:hover {
 
     footer > address {
         padding: 0;
+    }
+
+    #reviews-page > #reviews-container > .comment-container {
+        min-height: 0;
     }
 }

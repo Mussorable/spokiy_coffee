@@ -44,8 +44,18 @@ const showReviews = () => {
 
             document.querySelector("h3").textContent = element?.fields.user_name;
             document.querySelector(".comment").textContent = element?.fields.review;
+            reviewRender(element?.fields.review.length, document.querySelector(".comment-container"));
         });
     });
+}
+
+const reviewRender = (reviewLength, commentBlock) => {
+    if (reviewLength >= 100) {
+        commentBlock.classList.add("md-span");
+    } if (reviewLength >= 500) {
+        commentBlock.classList.remove("md-span");
+        commentBlock.classList.add("lg-span");
+    }
 }
 
 showReviews();

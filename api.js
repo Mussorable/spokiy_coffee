@@ -6,6 +6,7 @@ const endpoint = `reviews.json`;
 // VALIDATION SETTINGS
 const minLengthOfChars = 2;
 const maxLengthOfChars = 30;
+const regURL = new RegExp(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
 
 const reviewForm = document.querySelector("#review-form");
 const reviewField = document.querySelector("#review-field");
@@ -17,24 +18,38 @@ reviewForm.addEventListener("submit", event => {
     const date = new Date();
     const API = new FetchWrapper(BaseURL);
     if (userName.value.length >= minLengthOfChars && userName.value.length <= maxLengthOfChars) {
-        API.post(endpoint, {
-            fields: {
-                user_name: userName.value,
-                review: reviewField.value,
-                current_time: `${date.getDate()} ${new Intl.DateTimeFormat("uk-UA", {month:"long"}).format(date)} ${date.getFullYear()}`
+        try {
+            if (regURL.test(userName.value) || regURL.test(reviewField.value)) {
+                document.querySelector("p.error-message")?.remove();
+                const span = document.createElement("p");
+                span.classList.add("error-message");
+                span.textContent = "Посилання на інші сайти заборонені / Перевірте відступи від точки";
+                document.querySelector(".review-block").appendChild(span);
+                return new Error("URL RegEx validation.");
             }
-        }).then(response => {
-            reviewPage.insertAdjacentHTML("afterbegin",
-                    `<div class="comment-container">
-                        <h3></h3>
-                        <p class="comment"></p>
-                        <p class="comment-time">${date.getDate()} ${new Intl.DateTimeFormat("uk-UA", {month:"long"}).format(date)} ${date.getFullYear()}</p>
-                    </div>`);
-                    
-            document.querySelector("h3").textContent = userName.value;
-            document.querySelector(".comment").textContent = reviewField.value;
-            reviewRender(reviewField.value.length, document.querySelector(".comment-container"));
-        });
+            API.post(endpoint, {
+                fields: {
+                    user_name: userName.value,
+                    review: reviewField.value,
+                    current_time: `${date.getDate()} ${new Intl.DateTimeFormat("uk-UA", {month:"long"}).format(date)} ${date.getFullYear()}`
+                }
+            }).then(response => {
+                reviewPage.insertAdjacentHTML("afterbegin",
+                        `<div class="comment-container">
+                            <h3></h3>
+                            <p class="comment"></p>
+                            <p class="comment-time">${date.getDate()} ${new Intl.DateTimeFormat("uk-UA", {month:"long"}).format(date)} ${date.getFullYear()}</p>
+                        </div>`);
+                        
+                document.querySelector("h3").textContent = userName.value;
+                document.querySelector(".comment").textContent = reviewField.value;
+                reviewRender(reviewField.value.length, document.querySelector(".comment-container"));
+            });
+        } catch (error) {
+            userName.value = "";
+            reviewField.value = "";
+            console.log(error);
+        }
     }
 });
 

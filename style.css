@@ -62,13 +62,22 @@ textarea {
 /* -- HEADER-START -- */
 
 header {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--light-main-color);
     border-bottom: var(--border-style-hf);
+}
+
+header.desktop {
+    top: 0;
+}
+
+header.mobile {
+    bottom: 0;
+    z-index: 100;
 }
 
 header img.logo {
@@ -417,6 +426,11 @@ main .heading-container h1 {
     }
 
 @media (max-width: 600px) {
+    header {
+        border: none;
+        border-top: var(--border-style-hf);
+    }
+
     header > div > a > img.logo {
         height: 10dvw;
         margin-left: 0;
@@ -466,6 +480,10 @@ main .heading-container h1 {
         text-align: center !important;
     }
 
+    footer {
+        margin-bottom: calc(10dvw + 2px + 0.2rem);
+    }
+
     footer > address {
         padding: 0;
     }
@@ -486,5 +504,10 @@ main .heading-container h1 {
     .lg-span {
         grid-column-end: span 1;
         grid-row-end: span 1;
+    }
+
+    .error-message {
+        margin-left: 0 !important;
+        margin-top: 1rem !important;
     }
 }

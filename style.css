@@ -10,6 +10,7 @@
     --white: #fff;
     --b-color: #0F1020;
     --button-bg-color: #A27B5C;
+    --error-color: #ff3333;
 
     --dark-main-color:#252525;
 
@@ -284,6 +285,13 @@ main .heading-container h1 {
     visibility: hidden;
 }
 
+#leave-comment-container .error-message {
+    display: inline-block;
+    margin: 0;
+    margin-left: 1rem;
+    color: var(--error-color);
+}
+
 #leave-comment-container > .heading-container > #review-form > .form-container > .name-block > #user-name {
     width: 20dvw;
 }
@@ -306,11 +314,12 @@ main .heading-container h1 {
 
 #leave-comment-container > .heading-container > #review-form > .form-container > .name-block > #user-name.clicked:invalid,
 #leave-comment-container > .heading-container > #review-form > .form-container > .review-block > #review-field.clicked:invalid {
-    border:2px solid #ff3333;
+    border:2px solid var(--error-color);
 }
 
 #leave-comment-container > .heading-container > #review-form > .form-container > .button-container > #send-button {
     background-color: var(--light-main-color);
+    color: var(--b-color);
     border: 1.5px solid var(--b-color);
     border-radius: 3px;
     padding: 0.5rem 1rem;
@@ -369,6 +378,7 @@ main .heading-container h1 {
     font-size: 0.8rem;
     color: grey;
     text-align: right;
+    text-transform: capitalize;
 }
 
 /* -- FOOTER-END -- */

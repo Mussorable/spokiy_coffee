@@ -1,5 +1,5 @@
 const headerHtml = 
-    `<header class="flex">
+    `<header class="flex desktop">
         <div><a href="/"><img class="logo" src="/media/rsz_main_logo.png" height="40" width="auto" alt=""></a></div>
         <nav id="navigation-list">
 
@@ -82,6 +82,8 @@ const setNaviLinks = () => {
 
 const mediaMaxWidth = (screenWidth) => {
     if (screenWidth.matches) {
+        document.querySelector("header").classList.remove("desktop");
+        document.querySelector("header").classList.add("mobile");
         document.querySelectorAll(".navigation-link").forEach(item => {
             item.querySelector("span").classList.add("sr-only");
             const attr = item.getAttribute("navigation");

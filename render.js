@@ -25,6 +25,50 @@ const footerHtml =
         </address>
     </footer>`;
 
+const multiGlossary = {
+    navigation: {
+        sendButton: {
+            "ua-UA": "Відправити",
+            "en-EN": "Send",
+            "pl-PL": "Wyślij"
+        },
+        labelYourName: {
+            "ua-UA": "Твоє ім'я",
+            "en-EN": "Your name",
+            "pl-PL": "Twoje imię"
+        },
+        labelYourComment: {
+            "ua-UA": "Твій коментар",
+            "en-EN": "Your comment",
+            "pl-PL": "Twój komentarz"
+        }
+    },
+    mainPage: {
+        letsMeet: {
+            "ua-UA": "Давай знайомитися",
+            "en-EN": "Nice to meet you",
+            "pl-PL": "Zapoznajmy się"
+        },
+        promotions: {
+            "ua-UA": "Акції та новини",
+            "en-EN": "Promotions and news",
+            "pl-PL": "Promocje"
+        }
+    },
+    reviewPage: {
+        leaveAComment: {
+            "ua-UA": "Залиш свою думку",
+            "en-EN": "Leave your comment",
+            "pl-PL": "Zostaw swój komentarz"
+        },
+        reviews: {
+            "ua-UA": "Відгуки",
+            "en-EN": "Reviews",
+            "pl-PL": "Opinie"
+        }
+    }
+}
+
 const pageTiles = {
     reviews: "Відгуки",
     menu: "Меню",
@@ -108,7 +152,7 @@ const setNaviLinks = () => {
             .appendChild(li)
             .appendChild(a)
             .appendChild(text);
-        navigationLink.textContent = item.span[document.cookie ? getCookieValue("lang") : "pl-PL"];
+        navigationLink.textContent = item.span[document.cookie ? getCookieValue("lang") : "ua-UA"];
 
         document.querySelector("#navigation-list > ul").appendChild(frag);
     });
@@ -145,6 +189,22 @@ const multiLang = () => {
     });
 }
 
+const setLanguage = () => {
+    if (window.location.href.includes("/reviews.html")) {
+
+        document.querySelector("#name-label").textContent = multiGlossary.navigation.labelYourName[document.cookie ? getCookieValue("lang") : "ua-UA"];
+        document.querySelector("#user-name").setAttribute("placeholder", multiGlossary.navigation.labelYourName[document.cookie ? getCookieValue("lang") : "ua-UA"]);
+
+        document.querySelector("#comment-label").textContent = multiGlossary.navigation.labelYourComment[document.cookie ? getCookieValue("lang") : "ua-UA"];
+        document.querySelector("#review-field").setAttribute("placeholder", multiGlossary.navigation.labelYourComment[document.cookie ? getCookieValue("lang") : "ua-UA"]);
+
+        document.querySelector("#reviews-heading").textContent = multiGlossary.reviewPage.reviews[document.cookie ? getCookieValue("lang") : "ua-UA"];
+        document.querySelector("#leave-comment-heading").textContent = multiGlossary.reviewPage.leaveAComment[document.cookie ? getCookieValue("lang") : "ua-UA"];
+        document.querySelector("#send-button").textContent = multiGlossary.navigation.sendButton[document.cookie ? getCookieValue("lang") : "ua-UA"];
+    }
+
+}
+
 const initialization = () => {
     document.body.setAttribute("lang", navigator.language);
 
@@ -156,11 +216,13 @@ const initialization = () => {
 
     document.body.insertAdjacentHTML("afterbegin", headerHtml);
     setNaviLinks();
+    setLanguage();
 
     document.body.insertAdjacentHTML("beforeend", footerHtml);
 
     multiLang();
     mediaMaxWidth(window.matchMedia("(max-width:600px)"));
+
 }
 
 initialization();
@@ -173,7 +235,11 @@ document.querySelectorAll(".lang-flag").forEach(item => {
     item.addEventListener("click", event => {
         setCookie("lang", item.getAttribute("lang"), 21);
         document.body.setAttribute("lang", item.getAttribute("lang"));
-        document.querySelector("#navigation-list > ul").remove();
-        setNaviLinks();
+
+        if (!(window.matchMedia("(max-width:600px)").matches)) {
+            document.querySelector("#navigation-list > ul").remove();
+            setNaviLinks();
+        }
+        setLanguage();
     });
 });

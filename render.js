@@ -39,32 +39,60 @@ const langTiles = {
 
 const mediaNaviButtons = {
     menu: {
-        span: "Меню",
+        span: {
+            "ua-UA": "Меню",
+            "en-EN": "Menu",
+            "pl-PL": "Menu"
+        },
         svg: "/svg/coffee.svg",
         link: "menu",
         href: "/menu.html"
     },
     promotions: {
-        span: "Акції",
+        span: {
+            "ua-UA": "Акції",
+            "en-EN": "Promotions",
+            "pl-PL": "Promocje"
+        },
         svg: "/svg/promotions.svg",
         link: "promotions",
         href: "/promotions.html"
     },
     reviews: {
-        span: "Відгуки",
+        span: {
+            "ua-UA": "Відгуки",
+            "en-EN": "Reviews",
+            "pl-PL": "Opinie"
+        },
         svg: "/svg/reviews.svg",
         link: "reviews",
         href: "/reviews.html"
     },
     main: {
-        span: "Головна",
+        span: {
+            "ua-UA": "Головна",
+            "en-EN": "Main",
+            "pl-PL": "Pierwsza strona"
+        },
         svg: "/svg/main.svg",
         link: "main",
         href: "/"
     }
 }
 
+const getCookieValue = (name) => (
+    document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
+)
+
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
 const setNaviLinks = () => {
+    const getLang = document.body.getAttribute("lang");
     document.querySelector("#navigation-list").appendChild(document.createElement("ul"));
     Object.values(mediaNaviButtons).forEach(item => {
         const frag = document.createDocumentFragment();
@@ -80,11 +108,11 @@ const setNaviLinks = () => {
             .appendChild(li)
             .appendChild(a)
             .appendChild(text);
-        navigationLink.textContent = item.span;
+        navigationLink.textContent = item.span[document.cookie ? getCookieValue("lang") : "pl-PL"];
 
         document.querySelector("#navigation-list > ul").appendChild(frag);
     });
-};
+}
 
 const mediaMaxWidth = (screenWidth) => {
     if (screenWidth.matches) {
@@ -109,12 +137,17 @@ const mediaMaxWidth = (screenWidth) => {
 const multiLang = () => {
     Object.keys(langTiles).forEach(item => {
         document.querySelector("#lang-container").insertAdjacentHTML("afterbegin", 
-            `<div class="lang-flag"><p>${langTiles[item]}</p><img class="lang-icon" src="/svg/${item}.svg" width="auto" height="40" alt=""></div>`);
-        document.querySelector(".lang-flag").setAttribute("lang", item);
+            `<div class="lang-flag">
+                <p>${langTiles[item]}</p>
+                <img class="lang-icon" src="/svg/${item}.svg" width="auto" height="40" alt="">
+            </div>`);
+        document.querySelector(".lang-flag").setAttribute("lang", `${item}-${item.toUpperCase()}`);
     });
 }
 
 const initialization = () => {
+    document.body.setAttribute("lang", navigator.language);
+
     Object.keys(pageTiles).forEach(item => {
         if(window.location.href.includes(item)) {
             document.title = pageTiles[item];
@@ -128,10 +161,19 @@ const initialization = () => {
 
     multiLang();
     mediaMaxWidth(window.matchMedia("(max-width:600px)"));
-
-    document.querySelector("#footer-change-lang").addEventListener("click", () => {
-        document.querySelector("#lang-container").classList.toggle("visible");
-    });
 }
 
 initialization();
+
+document.querySelector("#footer-change-lang").addEventListener("click", () => {
+    document.querySelector("#lang-container").classList.toggle("visible");
+});
+
+document.querySelectorAll(".lang-flag").forEach(item => {
+    item.addEventListener("click", event => {
+        setCookie("lang", item.getAttribute("lang"), 21);
+        document.body.setAttribute("lang", item.getAttribute("lang"));
+        document.querySelector("#navigation-list > ul").remove();
+        setNaviLinks();
+    });
+});

@@ -259,6 +259,7 @@ footer > ul > li > .lang-container > .lang-flag {
     padding-inline: 1rem;
     border-bottom: 1px solid var(--b-color);
     transition: background-color .2s;
+    cursor: pointer;
 }
 
 footer > ul > li > .lang-container > .lang-flag:last-child {

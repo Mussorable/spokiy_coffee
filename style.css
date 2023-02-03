@@ -43,7 +43,7 @@ body {
     border-width: 0;
 }
 
-footer > ul > li > button {
+button.bs-hidden {
 	background: none;
 	color: inherit;
 	border: none;
@@ -99,6 +99,10 @@ header > nav > ul {
     margin: 0;
 }
 
+header > nav > ul > li:last-child {
+    display: none;
+}
+
 header > nav > ul > li > a {
     padding: 1rem 0.5rem;
     transition: 0.2s;
@@ -117,6 +121,10 @@ header > nav > ul > li > a:hover {
 /* -- HEADER-END -- */
 
 /* -- MAIN-START -- */
+
+main.desktop {
+    margin-top: calc(6dvw + 2px + 0.2rem);
+}
 
 main > .main-commercial {
     background: linear-gradient(rgba(0 0 0 / 0%), rgba(0 0 0 / 20%));
@@ -143,7 +151,7 @@ main > section > .flex-lg:not(:first-child) {
     margin-top: 2rem;
 }
 
-main .global-container {
+.global-container {
     max-width: 1180px;
     margin: auto;
     padding-inline:0.5rem;
@@ -294,6 +302,28 @@ main .heading-container h1 {
     visibility: hidden;
 }
 
+#leave-comment-container > .heading-container > #review-form > .form-container > .button-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .button-container > div {
+    align-self: center;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .button-container > div > img {
+    cursor: pointer;
+    transition: .3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#leave-comment-container > .heading-container > #review-form > .form-container > .button-container > div > img:hover {
+    height: 40px;
+}
+
 #leave-comment-container .error-message {
     display: inline-block;
     margin: 0;
@@ -346,6 +376,13 @@ main .heading-container h1 {
     background-color: grey;
 }
 
+#leave-comment-container > .heading-container > #review-form > .form-container > .button-container > #send-button:disabled {
+    background-color: lightgrey;
+    color: white;
+    box-shadow: none;
+    cursor: default;
+}
+
 #reviews-page > #reviews-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -388,6 +425,29 @@ main .heading-container h1 {
     color: grey;
     text-align: right;
     text-transform: capitalize;
+}
+
+.shadow {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background: linear-gradient(rgba(0 0 0 / 40%), rgba(0 0 0 / 40%));
+}
+
+#information-container {
+    max-width: 600px;
+    margin-top: 15dvh;
+    background-color: var(--white);
+    border: 2px solid var(--b-color);
+    border-radius: 6px;
+    padding: 0.5rem 1.5rem;
+    color: var(--b-color);
+}
+
+.margin-container {
+    margin-inline: 0.5rem;
 }
 
 /* -- FOOTER-END -- */
@@ -439,10 +499,17 @@ main .heading-container h1 {
 
     header > #navigation-list {
         margin: 0;
+        width: 100%;
     }
 
     header > #navigation-list > ul {
         gap: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+
+    header > nav > ul > li > a {
+        padding: 1rem;
     }
 
     header > #navigation-list > ul > li > a > img {
@@ -484,8 +551,13 @@ main .heading-container h1 {
         margin-bottom: calc(10dvw + 2px + 0.2rem);
     }
 
+    footer > .navigation-list > li > a, footer > .navigation-list > li > button#footer-change-lang {
+        padding: 0;
+    }
+
     footer > address {
         padding: 0;
+        font-size: 0.6rem;
     }
 
     #reviews-page > #reviews-container > .comment-container {

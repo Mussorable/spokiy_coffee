@@ -11,7 +11,7 @@ const footerHtml =
             <li><a href="/promotions.html">Акції</a></li>
             <li><a href="/reviews.html">Відгуки</a></li>
             <li id="change-lang">
-                <button id="footer-change-lang" class="change-lang">Зміна мови</button>
+                <button id="footer-change-lang" class="change-lang bs-hidden">Зміна мови</button>
                 <div id="lang-container" class="lang-container">
                 </div>
             </li>
@@ -54,7 +54,13 @@ const mediaNaviButtons = {
         span: "Відгуки",
         svg: "/svg/reviews.svg",
         link: "reviews",
-        href: "reviews.html"
+        href: "/reviews.html"
+    },
+    main: {
+        span: "Головна",
+        svg: "/svg/main.svg",
+        link: "main",
+        href: "/"
     }
 }
 
@@ -82,8 +88,12 @@ const setNaviLinks = () => {
 
 const mediaMaxWidth = (screenWidth) => {
     if (screenWidth.matches) {
+        document.querySelector("header > div").remove();
+        document.querySelector("header > nav > ul > li:last-child").style.display = "initial";
         document.querySelector("header").classList.remove("desktop");
+        document.querySelector("main").classList.remove("desktop");
         document.querySelector("header").classList.add("mobile");
+        document.querySelector("main").classList.add("mobile");
         document.querySelectorAll(".navigation-link").forEach(item => {
             item.querySelector("span").classList.add("sr-only");
             const attr = item.getAttribute("navigation");

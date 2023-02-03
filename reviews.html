@@ -23,11 +23,11 @@
                     <h2 id="leave-comment-heading">Залиш свою думку</h2>
                     <div class="form-container">
                         <div class="name-block">
-                            <label for="user-name">Твоє ім'я</label>
+                            <label id="name-label" for="user-name">Твоє ім'я</label>
                             <input pattern="^[a-zA-Zа-яА-Я0-9]+" id="user-name" placeholder="Твоє ім'я" type="text" minlength="2" maxlength="30" autocomplete="given-name" required>
                         </div>
                         <div class="review-block">
-                            <label for="review-field">Тут напиши свій коментар</label>
+                            <label id="comment-label" for="review-field">Тут напиши свій коментар</label>
                             <textarea id="review-field" cols="30" rows="10" placeholder="Твій коментар" maxlength="1000" required autocapitalize="off" autocomplete="off"></textarea>
                         </div>
                         <div class="button-container">
@@ -40,7 +40,7 @@
         </div>
         <section id="reviews-page" class="global-container">
             <div class="heading-container">
-                <h1>Відгуки</h1>
+                <h1 id="reviews-heading">Відгуки</h1>
             </div>
             <div id="reviews-container">
             </div>

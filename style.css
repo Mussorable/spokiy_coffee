@@ -99,10 +99,6 @@ header > nav > ul {
     margin: 0;
 }
 
-header > nav > ul > li:last-child {
-    display: none;
-}
-
 header > nav > ul > li > a {
     padding: 1rem 0.5rem;
     transition: 0.2s;
@@ -204,7 +200,7 @@ footer {
     display: flex;
     justify-content: space-around;
     background-color: var(--light-second-color);
-    padding-block   : 1rem;
+    padding-block   : 0.5rem;
     align-items: center;
 }
 

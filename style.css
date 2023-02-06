@@ -525,6 +525,7 @@ main .heading-container h1 {
 
     header > nav > ul > li > a > span {
         font-size: 0.8rem;
+        color: var(--b-color);
     }
 
     header > #navigation-list > ul > li > a > img {

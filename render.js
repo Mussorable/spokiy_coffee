@@ -1,47 +1,62 @@
 const multiGlossary = {
     navigation: {
         sendButton: {
-            "ua-UA": "Відправити",
-            "en-EN": "Send",
+            "uk-UA": "Відправити",
+            "en-US": "Send",
             "pl-PL": "Wyślij"
         },
         labelYourName: {
-            "ua-UA": "Твоє ім'я",
-            "en-EN": "Your name",
+            "uk-UA": "Твоє ім'я",
+            "en-US": "Your name",
             "pl-PL": "Twoje imię"
         },
         labelYourComment: {
-            "ua-UA": "Твій коментар",
-            "en-EN": "Your comment",
+            "uk-UA": "Твій коментар",
+            "en-US": "Your comment",
             "pl-PL": "Twój komentarz"
         },
         changeLanguage: {
-            "ua-UA": "Зміна мови",
-            "en-EN": "Language",
+            "uk-UA": "Зміна мови",
+            "en-US": "Language",
             "pl-PL": "Język"
         }
     },
     mainPage: {
         letsMeet: {
-            "ua-UA": "Давай знайомитися",
-            "en-EN": "Nice to meet you",
+            "uk-UA": "Давай знайомитися",
+            "en-US": "Nice to meet you",
             "pl-PL": "Zapoznajmy się"
         },
         promotions: {
-            "ua-UA": "Акції та новини",
-            "en-EN": "Promotions and news",
-            "pl-PL": "Promocje"
+            "uk-UA": "Акції та новини",
+            "en-US": "Promotions and news",
+            "pl-PL": "Promocje",
+            button: {
+                "uk-UA": "Щось інше?",
+                "en-US": "Something else?",
+                "pl-PL": "Coś innego?"
+            }
+        },
+        reviews: {
+            "uk-UA": "Відгуки",
+            "en-US": "Reviews",
+            "pl-PL": "Opinie",
+            button: {
+                "uk-UA": "Залиш свою думку",
+                "en-US": "Leave a comment",
+                "pl-PL": "Zostaw opinię"
+            }
         }
     },
     reviewPage: {
         leaveAComment: {
-            "ua-UA": "Залиш свою думку",
-            "en-EN": "Leave your comment",
+            "uk-UA": "Залиш свою думку",
+            "en-US": "Leave your comment",
             "pl-PL": "Zostaw swój komentarz"
         },
         reviews: {
-            "ua-UA": "Відгуки",
-            "en-EN": "Reviews",
+            "uk-UA": "Відгуки",
+            "en-US": "Reviews",
             "pl-PL": "Opinie"
         }
     }
@@ -62,8 +77,8 @@ const langTiles = {
 const mediaNaviButtons = {
     menu: {
         span: {
-            "ua-UA": "Меню",
-            "en-EN": "Menu",
+            "uk-UA": "Меню",
+            "en-US": "Menu",
             "pl-PL": "Menu"
         },
         svg: "/svg/coffee.svg",
@@ -72,8 +87,8 @@ const mediaNaviButtons = {
     },
     promotions: {
         span: {
-            "ua-UA": "Акції",
-            "en-EN": "Promotions",
+            "uk-UA": "Акції",
+            "en-US": "Promotions",
             "pl-PL": "Promocje"
         },
         svg: "/svg/promotions.svg",
@@ -82,8 +97,8 @@ const mediaNaviButtons = {
     },
     reviews: {
         span: {
-            "ua-UA": "Відгуки",
-            "en-EN": "Reviews",
+            "uk-UA": "Відгуки",
+            "en-US": "Reviews",
             "pl-PL": "Opinie"
         },
         svg: "/svg/reviews.svg",
@@ -92,8 +107,8 @@ const mediaNaviButtons = {
     },
     main: {
         span: {
-            "ua-UA": "Головна",
-            "en-EN": "Main",
+            "uk-UA": "Головна",
+            "en-US": "Main",
             "pl-PL": "Pierwsza strona"
         },
         svg: "/svg/main.svg",
@@ -105,8 +120,8 @@ const mediaNaviButtons = {
 const navigationHeader = {
     menu: {
         span: {
-            "ua-UA": "Меню",
-            "en-EN": "Menu",
+            "uk-UA": "Меню",
+            "en-US": "Menu",
             "pl-PL": "Menu"
         },
         svg: "/svg/coffee.svg",
@@ -115,8 +130,8 @@ const navigationHeader = {
     },
     promotions: {
         span: {
-            "ua-UA": "Акції",
-            "en-EN": "Promotions",
+            "uk-UA": "Акції",
+            "en-US": "Promotions",
             "pl-PL": "Promocje"
         },
         svg: "/svg/promotions.svg",
@@ -125,8 +140,8 @@ const navigationHeader = {
     },
     reviews: {
         span: {
-            "ua-UA": "Відгуки",
-            "en-EN": "Reviews",
+            "uk-UA": "Відгуки",
+            "en-US": "Reviews",
             "pl-PL": "Opinie"
         },
         svg: "/svg/reviews.svg",
@@ -155,7 +170,7 @@ const mediaMaxWidth = (screenWidth) => {
         document.querySelector("header").classList.add("mobile");
         document.querySelector("main").classList.add("mobile");
         document.querySelectorAll(".navigation-link").forEach(item => {
-            item.querySelector("span").classList.add("sr-only");
+            // item.querySelector("span").classList.add("sr-only");
             const attr = item.getAttribute("navigation");
             const svgElement = document.createElement("img");
             svgElement.setAttribute("src", mediaNaviButtons[attr].svg);
@@ -173,15 +188,15 @@ const setLanguage = () => {
 
     if (window.location.href.includes("/reviews.html")) {
 
-        document.querySelector("#name-label").textContent = multiGlossary.navigation.labelYourName[document.cookie ? getCookieValue("lang") : "ua-UA"];
-        document.querySelector("#user-name").setAttribute("placeholder", multiGlossary.navigation.labelYourName[document.cookie ? getCookieValue("lang") : "ua-UA"]);
+        document.querySelector("#name-label").textContent = multiGlossary.navigation.labelYourName[document.cookie ? getCookieValue("lang") : "uk-UA"];
+        document.querySelector("#user-name").setAttribute("placeholder", multiGlossary.navigation.labelYourName[document.cookie ? getCookieValue("lang") : "uk-UA"]);
 
-        document.querySelector("#comment-label").textContent = multiGlossary.navigation.labelYourComment[document.cookie ? getCookieValue("lang") : "ua-UA"];
-        document.querySelector("#review-field").setAttribute("placeholder", multiGlossary.navigation.labelYourComment[document.cookie ? getCookieValue("lang") : "ua-UA"]);
+        document.querySelector("#comment-label").textContent = multiGlossary.navigation.labelYourComment[document.cookie ? getCookieValue("lang") : "uk-UA"];
+        document.querySelector("#review-field").setAttribute("placeholder", multiGlossary.navigation.labelYourComment[document.cookie ? getCookieValue("lang") : "uk-UA"]);
 
-        document.querySelector("#reviews-heading").textContent = multiGlossary.reviewPage.reviews[document.cookie ? getCookieValue("lang") : "ua-UA"];
-        document.querySelector("#leave-comment-heading").textContent = multiGlossary.reviewPage.leaveAComment[document.cookie ? getCookieValue("lang") : "ua-UA"];
-        document.querySelector("#send-button").textContent = multiGlossary.navigation.sendButton[document.cookie ? getCookieValue("lang") : "ua-UA"];
+        document.querySelector("#reviews-heading").textContent = multiGlossary.reviewPage.reviews[document.cookie ? getCookieValue("lang") : "uk-UA"];
+        document.querySelector("#leave-comment-heading").textContent = multiGlossary.reviewPage.leaveAComment[document.cookie ? getCookieValue("lang") : "uk-UA"];
+        document.querySelector("#send-button").textContent = multiGlossary.navigation.sendButton[document.cookie ? getCookieValue("lang") : "uk-UA"];
     }
 
 }
@@ -234,7 +249,7 @@ const setNavigationHeader = (naviLinks, position) => {
         a.setAttribute("navigation", naviLinks[element].link);
         const span = document.createElement("span");
         span.classList.add("navigation-text");
-        span.textContent = document.cookie ? naviLinks[element].span[getCookieValue("lang")] : "ua-UA";
+        span.textContent = document.cookie ? naviLinks[element].span[getCookieValue("lang")] : "uk-UA";
 
         frag
             .appendChild(nav)
@@ -256,8 +271,8 @@ const setNavigationHeader = (naviLinks, position) => {
     if (window.matchMedia("(max-width:600px)").matches) {
         const mainPage = {
             span: {
-                "ua-UA": "Головна",
-                "en-EN": "Main",
+                "uk-UA": "Головна",
+                "en-US": "Main",
                 "pl-PL": "Pierwsza strona"
             },
             svg: "/svg/main.svg",
@@ -274,7 +289,7 @@ const setNavigationHeader = (naviLinks, position) => {
 
         a.setAttribute("href", mainPage.href);
         a.setAttribute("navigation", mainPage.link);
-        span.textContent = document.cookie ? mainPage.span[getCookieValue("lang")] : "ua-UA";
+        span.textContent = document.cookie ? mainPage.span[getCookieValue("lang")] : "uk-UA";
 
         frag
             .appendChild(nav)
@@ -289,11 +304,11 @@ const setNavigationHeader = (naviLinks, position) => {
 
 const changeLangButton = () => {
     const languageTiles = {
-        "ua-UA": {
+        "uk-UA": {
             span: "Українська",
             svg: "/svg/ua.svg"
         },
-        "en-EN": {
+        "en-US": {
             span: "English",
             svg: "/svg/en.svg",
         },
@@ -317,7 +332,7 @@ const changeLangButton = () => {
     for (const element in attributes) {
         button.setAttribute(element, attributes[element]);
     }
-    button.textContent = multiGlossary.navigation.changeLanguage[document.cookie ? getCookieValue("lang") : "ua-UA"];
+    button.textContent = multiGlossary.navigation.changeLanguage[document.cookie ? getCookieValue("lang") : "uk-UA"];
     const div = document.createElement("div");
     div.setAttribute("id", "lang-container");
     div.classList.add("lang-container");
@@ -357,10 +372,22 @@ const changeLangButton = () => {
     document.querySelector("#lang-container").appendChild(frag);
 }
 
+// set main page language
+const setMainPageLanguage = () => {
+    document.querySelectorAll(".content-container").forEach(item => {
+        if (item.getAttribute("content")) {
+            item.querySelector("h2").textContent = multiGlossary.mainPage[item?.getAttribute("content")][document.cookie ? getCookieValue("lang") : "uk-UA"];
+        }
+        if (item.querySelector("a")) {
+            item.querySelector("a").textContent = multiGlossary.mainPage[item?.getAttribute("content")].button[document.cookie ? getCookieValue("lang") : "uk-UA"];
+        }
+    });
+}
+
 const setNavigationFooter = (navigationHeader) => {
     const addressPoint = {
-        "ua-UA": "Запоріжжя, Проспект Соборний 159<br> SPOKIY Coffee<br> 69000",
-        "en-EN": "Sobornyi Ave. 159, Zaporizhzhia, Ukraine<br> SPOKIY Coffee<br> 69000",
+        "uk-UA": "Запоріжжя, Проспект Соборний 159<br> SPOKIY Coffee<br> 69000",
+        "en-US": "Sobornyi Ave. 159, Zaporizhzhia, Ukraine<br> SPOKIY Coffee<br> 69000",
         "pl-PL": "Zaporoże, prospekt Soborny 159<br> SPOKIY Coffee<br> 69000"
     }
 
@@ -376,7 +403,7 @@ const setNavigationFooter = (navigationHeader) => {
         const a = document.createElement("a");
         a.setAttribute("href", navigationHeader[element].href);
         a.setAttribute("navigation", navigationHeader[element].link);
-        a.textContent = document.cookie ? navigationHeader[element].span[getCookieValue("lang")] : "ua-UA";
+        a.textContent = document.cookie ? navigationHeader[element].span[getCookieValue("lang")] : "uk-UA";
 
         frag
             .appendChild(ul)
@@ -391,7 +418,7 @@ const setNavigationFooter = (navigationHeader) => {
     const address = document.createElement("address");
     const a = document.createElement("a");
     a.setAttribute("href", "https://www.google.pl/maps/place/Sobornyi+Ave,+159,+Zaporizhzhia,+Zaporiz'ka+oblast,+Ukraine,+69000/@47.8487776,35.1177497,17z/data=!3m1!4b1!4m5!3m4!1s0x40dc672eb5a116c1:0x3299cb53e8aa2196!8m2!3d47.848774!4d35.1203246");
-    a.innerHTML = addressPoint[document.cookie ? getCookieValue("lang") : "ua-UA"];
+    a.innerHTML = addressPoint[document.cookie ? getCookieValue("lang") : "uk-UA"];
 
     frag
         .appendChild(address)
@@ -411,7 +438,7 @@ const initialization = () => {
 
     document.body.insertAdjacentHTML("afterbegin", `<header class="flex desktop"></header>`);
     setHF();
-
+    setMainPageLanguage();
     setLanguage();
     mediaMaxWidth(window.matchMedia("(max-width:600px)"));
 }
@@ -424,6 +451,7 @@ document.querySelector("#footer-change-lang").addEventListener("click", () => {
 
 document.querySelectorAll(".lang-flag").forEach(item => {
     item.addEventListener("click", event => {
+        location.reload();
         setCookie("lang", item.getAttribute("lang"), 21);
         document.body.setAttribute("lang", item.getAttribute("lang"));
 
@@ -431,11 +459,7 @@ document.querySelectorAll(".lang-flag").forEach(item => {
             document.querySelector("#navigation-list > ul").remove();
             setNavigationHeader(navigationHeader, "header");
         }
-
-        document.querySelector("footer").remove();
-        setNavigationFooter(navigationHeader);
         setLanguage();
         document.querySelector("#lang-container").classList.remove("visible");
-        location.reload();
     });
 });

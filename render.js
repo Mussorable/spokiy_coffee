@@ -249,7 +249,7 @@ const setNavigationHeader = (naviLinks, position) => {
         a.setAttribute("navigation", naviLinks[element].link);
         const span = document.createElement("span");
         span.classList.add("navigation-text");
-        span.textContent = document.cookie ? naviLinks[element].span[getCookieValue("lang")] : naviLinks[element].span["uk-UA"];
+        span.textContent = naviLinks[element].span[document.cookie ? getCookieValue("lang") : "uk-UA"];
 
         frag
             .appendChild(nav)
@@ -289,7 +289,7 @@ const setNavigationHeader = (naviLinks, position) => {
 
         a.setAttribute("href", mainPage.href);
         a.setAttribute("navigation", mainPage.link);
-        span.textContent = document.cookie ? mainPage.span[getCookieValue("lang")] : mainPage.span["uk-UA"];
+        span.textContent = mainPage.span[document.cookie ? getCookieValue("lang") : "uk-UA"];
 
         frag
             .appendChild(nav)

@@ -46,10 +46,16 @@ reviewForm.addEventListener("submit", event => {
     if (userName.value.length >= minLengthOfChars && userName.value.length <= maxLengthOfChars) {
         try {
             if (regURL.test(userName.value) || regURL.test(reviewField.value)) {
+                const errorMessage = {
+                    "uk-UA": "Посилання на інші сайти заборонені / Перевірте відступи від точки",
+                    "en-US": "Links to other sites are prohibited / Check dot spacing",
+                    "pl-PL": "Publikacja obcych stron internetowych niedozwolona / Sprawdz odstępty od kropek"
+                }
+
                 document.querySelector("p.error-message")?.remove();
                 const span = document.createElement("p");
                 span.classList.add("error-message");
-                span.textContent = "Посилання на інші сайти заборонені / Перевірте відступи від точки";
+                span.textContent = errorMessage[document.cookie ? getCookieValue("lang") : "uk-UA"];
                 document.querySelector(".review-block").appendChild(span);
                 document.querySelector("#send-button").setAttribute("disabled", "disabled");
                 return new Error("URL RegEx validation.");
@@ -97,6 +103,12 @@ const reviewRender = (reviewLength, commentBlock) => {
 }
 
 document.querySelector("#user-name").addEventListener("keyup", event => {
+    const errorMessage = {
+        "uk-UA": ["Мінімум", "символи"],
+        "en-US": ["Minimum", "characters"],
+        "pl-PL": ["Minimum", "litery"]
+    }
+
     const nameField = document.querySelector("#user-name");
     const span = document.createElement("p");
     span.classList.add("error-message");
@@ -105,7 +117,7 @@ document.querySelector("#user-name").addEventListener("keyup", event => {
         document.querySelector("p.error-message")?.remove();
     } else if (nameField.value.length < nameField.getAttribute("minlength")) {
         document.querySelector("p.error-message")?.remove();
-        span.textContent = `Мінімум ${nameField.getAttribute("minlength")} символи`;
+        span.textContent = `${errorMessage[document.cookie ? getCookieValue("lang") : "uk-UA"][0]} ${nameField.getAttribute("minlength")} ${errorMessage[document.cookie ? getCookieValue("lang") : "uk-UA"][1]}`;
         document.querySelector(".name-block").appendChild(span);
     }
 });
@@ -130,8 +142,8 @@ document.querySelector("#button-faq").addEventListener("click", event => {
         }
     }
 
-    document.querySelector("#information-container > h2").textContent = document.cookie ? hRules[getCookieValue("lang")].heading : "uk-UA";
-    document.querySelector("#information-container > p").textContent = document.cookie ? hRules[getCookieValue("lang")].rules : "uk-UA";
+    document.querySelector("#information-container > h2").textContent = hRules[document.cookie ? getCookieValue("lang") : "uk-UA"].heading;
+    document.querySelector("#information-container > p").textContent = hRules[document.cookie ? getCookieValue("lang") : "uk-UA"].rules;
     document.querySelector(".shadow").classList.toggle("visible");
 });
 

@@ -428,6 +428,19 @@ main .heading-container h1 {
     text-transform: capitalize;
 }
 
+main > .global-container > .menu-element-container {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid var(--b-color);
+    padding: 1rem 6rem;
+    justify-content: space-between;
+}
+
+main > .global-container > .menu-element-container > * {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
 .shadow {
     visibility: hidden;
     position: fixed;

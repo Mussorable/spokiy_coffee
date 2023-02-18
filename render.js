@@ -174,7 +174,7 @@ const mediaMaxWidth = (screenWidth) => {
             const attr = item.getAttribute("navigation");
             const svgElement = document.createElement("img");
             svgElement.setAttribute("src", mediaNaviButtons[attr].svg);
-            svgElement.setAttribute("height", "40");
+            svgElement.setAttribute("height", "30");
             svgElement.setAttribute("width", "auto");
             item.appendChild(svgElement);
         });

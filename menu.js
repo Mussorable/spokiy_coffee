@@ -5,20 +5,23 @@ const endpoint = `menu.json`;
 
 const API = new FetchWrapper(BaseURL);
 
+const getCookieValue = (name) => (
+    document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
+)
+
 API.get(endpoint).then(response => {
     const section = document.createElement("section");
     section.classList.add("global-container");
     
     document.querySelector("main").appendChild(section);
 
+    if (response) {
     Object.values(response).forEach(item => {
-        console.log(item.element);
-
         const elementContainer = document.createElement("div");
         elementContainer.classList.add("menu-element-container");
         
         const elementName = document.createElement("h3");
-        elementName.textContent = item.element.name;
+        elementName.textContent = item.element.name[document.cookie ? getCookieValue("lang") : "uk-UA"];
         const elementPrice = document.createElement("p");
         elementPrice.textContent = item.element.price + " " + `UAH`;
         const elementValue = document.createElement("p");
@@ -29,4 +32,5 @@ API.get(endpoint).then(response => {
         elementContainer.appendChild(elementPrice);
         elementContainer.appendChild(elementValue);
     });
+    }
 });

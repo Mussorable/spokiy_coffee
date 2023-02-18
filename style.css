@@ -225,7 +225,7 @@ footer > .navigation-list > li {
 
 footer > .navigation-list > li > a,
 footer > .navigation-list > li > button#footer-change-lang {
-    padding-right: 1rem;
+    margin-right: 1rem;
     display: block;
     text-decoration: underline;
     font-weight: 200;
@@ -430,15 +430,22 @@ main .heading-container h1 {
 
 main > .global-container > .menu-element-container {
     display: flex;
-    gap: 1rem;
     border-bottom: 1px solid var(--b-color);
     padding: 1rem 6rem;
     justify-content: space-between;
+    align-items: center;
 }
 
 main > .global-container > .menu-element-container > * {
     margin: 0;
     font-size: 1.4rem;
+    display: inline-block;
+    width: 12ch;
+    text-align: center;
+}
+
+main > .global-container > .menu-element-container:nth-child(even) {
+    background-color: var(--light-second-color);
 }
 
 .shadow {
@@ -517,16 +524,13 @@ main > .global-container > .menu-element-container > * {
     }
 
     header > #navigation-list > ul {
-        /* gap: 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); */
         display: flex;
         gap: 0;
         justify-content: space-between;
     }
 
     header > nav > ul > li {
-        padding: 1rem 0.5rem;
+        padding: 0.5rem;
     }
 
     header > nav > ul > li > a {
@@ -537,7 +541,7 @@ main > .global-container > .menu-element-container > * {
     }
 
     header > nav > ul > li > a > span {
-        font-size: 0.8rem;
+        font-size: 1.1rem;
         color: var(--b-color);
     }
 
@@ -604,6 +608,10 @@ main > .global-container > .menu-element-container > * {
 
     #leave-comment-container > .heading-container > #review-form > .form-container > .name-block > #user-name {
         width: 100%;
+    }
+
+    main > .global-container > .menu-element-container {
+        padding-inline: 0;
     }
 
     .md-span,

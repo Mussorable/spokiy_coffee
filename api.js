@@ -73,6 +73,7 @@ reviewForm.addEventListener("submit", event => {
             }).then(response => {
                 renderReview(userName.value, reviewField.value, `${date.getDate()} ${new Intl.DateTimeFormat(document.cookie ? getCookieValue("lang") : "uk-UA", {month:"long"}).format(date)} ${date.getFullYear()}`);
                 reviewRender(reviewField.value.length, document.querySelector(".comment-container"));
+                location.reload();
             });
         } catch (error) {
             userName.value = "";
